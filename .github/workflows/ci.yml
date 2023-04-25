@@ -53,4 +53,4 @@ jobs:
           tag_name: ${{ env.release_tag }}
           draft: false
           prerelease: false
-          files: campaigns-slides.pdf
+          files: stirling.pdf
