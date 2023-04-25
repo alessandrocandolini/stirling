@@ -5,15 +5,17 @@ Notes on the Stirling formula
 
 ## Compile
 
-Assuming a standard latex installation plus `asymptote`, 
+Assuming a standard LaTeX distribution (eg, texlive) and `asymptote`, 
 ```
 latexmk -pdflatex stirling.tex
 ```
+(Depending on the LaTeX distribution, asymptote might require independent installation.)
 
-If you don't have a latex installation and/or asymnptote, one way to install them is via `nix`, eg, via an emphemeral nix shell: 
+One way to install a LaTeX distribution is via `nix`, for example using an ephemeral nix shell: 
 ```
 nix-shell -p texlive.combined.scheme-full asymptote
 ```
+(the full distribution is used)
 
 ## CI/CD 
 
