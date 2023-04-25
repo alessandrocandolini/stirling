@@ -5,41 +5,23 @@
 \makeatother
 \pdfoutput=1
 
-
-
 % *****************************************************************************
-%  Main packages
+% Main packages
 % *****************************************************************************
+\usepackage[english]{babel}       % Language hyphenation and translations 
+\usepackage[babel]{csquotes}      % Recommended when using biblatex
 
+\usepackage{graphicx}             % Standard package to load images 
 
-\usepackage[english]{babel}       % Attiva supporto per la lingua.
-\usepackage[babel]{csquotes}              % Consigliato se si usa biblatex.
+\usepackage[final]{microtype}     % Typographic refinements
 
-\usepackage{graphicx}                     % Per le immagini.
-
-%\usepackage{mparhack}                     % Get marginpar right.
-%\usepackage{fixltx2e}                     % Fixes some LaTeX stuff.
-
-%        	\usepackage[opticals,mathlf,onlytext]{MinionPro}%
-\usepackage[final]{microtype}             % Microgiustificazione e finezze.
-
-\usepackage{ifpdf}                        % To check if pdflatex is used.
-
-\ifpdf
-  \DeclareGraphicsRule{*}{mps}{*}{}       % To include metapost files.
-\fi
-
-\usepackage{subfig}                       % Multiple figures.
-\usepackage{url}                          % Url.
-
-%\usepackage{feynmp}                       % Feynman diagrams via metapost
+\usepackage{subfig}               % Multiple figures.
+\usepackage{url}                  % Url
 
 % *****************************************************************************
 % BIBLaTeX
 % *****************************************************************************
 \usepackage[%
-%style=philosophy-modern,%
-%style=philosophy-classic,%
 style=philosophy-verbose,%
 scauthorsbib,%
 hyperref,backref,%
@@ -47,7 +29,7 @@ backend=biber,%
 firstinits=true,%
 ibidtracker=true]{biblatex}
 
-\addbibresource{bibliography.bib}            % database di biblatex 
+\addbibresource{bibliography.bib}
 
 % *****************************************************************************
 % Quoting 
@@ -57,25 +39,23 @@ ibidtracker=true]{biblatex}
 indentfirst=false,
 %begintext=\openautoquote,
 %endtext=\closeautoquote,
-]{quoting}         
+]{quoting}
 
 
-\input{my-impostazioni-paper}          % Un file personale:
-					  % permette di mantenere ordinato il
-					  % sorgente
+\input{setup}
 
-					  \newcommand{\asympt}{\sim}
-%					  \newcommand{\BigO}[1]{\ensuremath{\operatorname{O}\bigl(#1\bigr)}}
-					  \newcommand{\bigO}{\ensuremath{\operatorname{O}}}
+\newcommand{\asympt}{\sim}
+\newcommand{\bigO}{\ensuremath{\operatorname{O}}}
+
 \title{Handout  on Stirling's formula}
 \author{Alessandro Candolini}
 \affiliation{Department of Physics, University Of Trieste, via Valerio~2,
 Trieste, Italy}
 \emailAdd{alessandro.candolini@gmail.com}
 \date{\today}
-\abstract{
+\abstract{%
 Some proofs of the well-known Stirling's asymptotic approximation of the
-factorial (or the Gamma function) are sketched. No attempt was made at full mathematical rigour, 
+factorial (or the Gamma function) are sketched. No attempt was made at full mathematical rigour,
 emphasis is mostly on the main ideas behind these proofs. }
 \begin{document}
 \maketitle
@@ -663,7 +643,7 @@ behavior of the integrand, which looks as shown in
 \label{sec:Gamma}
 \end{figure}
 
-Let $\fullfunction{f,g}{\interval[open right]{0}{+\infty}}{\R}$ be
+Let $f,g: \interval[open right]{0}{+\infty} \to \R$ be
 \begin{dgroup*}
 \begin{dmath*}
 f(t) = n \log t - t 
