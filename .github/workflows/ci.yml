@@ -21,8 +21,8 @@ jobs:
         uses: workflow/nix-shell-action@v3
         with:
           packages: texlive.combined.scheme-full, asymptote
-        script: |
-          latexmk -pdflatex stirling.tex
+          script: |
+            latexmk -pdflatex stirling.tex
       - name: Upload artifcat
         uses: actions/upload-artifact@v2
         with:
