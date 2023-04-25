@@ -34,8 +34,23 @@ jobs:
           script: |
             latexmk -pdflatex stirling.tex
 
-      - name: Upload artifcat
-        uses: actions/upload-artifact@v2
+      - name: Create tag name
+        if: github.ref == 'refs/heads/main'
+        run:  |
+          VERSION="prod-$(date -u +'%Y%m%d%H%M%SZ')"
+          echo "release_tag=$VERSION" >> $GITHUB_ENV
+
+      - name: Create tag
+        if: github.ref == 'refs/heads/main'
+        uses: rickstaa/action-create-tag@v1
         with:
-          name: PDF
-          path: stirling.pdf
+          tag: ${{ env.release_tag }}
+
+      - name: Create Github Release
+        if: github.ref == 'refs/heads/main'
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: ${{ env.release_tag }}
+          draft: false
+          prerelease: false
+          files: campaigns-slides.pdf
