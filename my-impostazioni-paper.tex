@@ -44,8 +44,16 @@
 \setfnpct{add-punct-marks=;}
 \usepackage[biblatex=true]{embrac}
 
-\AdaptNoteOpt\footcite\multfootcite
-\AdaptNoteOpt\autocite\multautocite
+%\AdaptNoteOpt\footcite\multfootcite
+%\AdaptNoteOpt\autocite\multautocite
+
+\AdaptNote\footcite{oo+m}[footnote]{%
+\setfnpct{dont-mess-around}%
+\IfNoValueTF{#1}
+{#NOTE{#3}}
+{\IfNoValueTF{#2}{#NOTE[#1]{#3}}{#NOTE[#1][#2]{#3}}}%
+}
+
 
 % *****************************************************************************
 % 	Additional hyperref stuff (to be improved)
