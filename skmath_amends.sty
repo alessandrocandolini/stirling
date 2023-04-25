@@ -64,6 +64,7 @@
       }
    }
 }
+% Cando's addition: allow more general exp command
 \RenewDocumentCommand\exp{sm}{\ensuremath{
       \IfBooleanTF{#1}{
 	 % Modified star behavior
@@ -89,15 +90,3 @@
                               \peek_meaning_ignore_spaces:NT\d{\!}}}%
 			}
   }
-
-\NewDocumentCommand\HH{}{\ensuremath{\mathbb{H}}}
-\NewDocumentCommand\quaternions{}{\ensuremath{\mathbb{H}}}
-\NewDocumentCommand\OO{}{\ensuremath{\mathbb{O}}}
-\DeclareDocumentCommand\kk{}{\ensuremath{\__skmath_imaginary_unit:n{k}}}
-\DeclareDocumentCommand\ee{}{\ensuremath{\__skmath_imaginary_unit:n{e}}}
-\DeclareDocumentCommand{\conj}{m}{%
-	\ensuremath{#1^{\dagger\mathstrut}}
-}
-\DeclareDocumentCommand\trace{m}{%
-  \ensuremath{\operatorname{Tr}\left(#1\right)}%
-}
