@@ -17,6 +17,7 @@
 *.fls
 *.fot
 *.log
+*.pdf
 
 # automatically-generated asymptote files
 stirling-*.asy
