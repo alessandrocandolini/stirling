@@ -7,9 +7,17 @@ on:
     branches: [ main ]
   workflow_dispatch: # enable manual execution
 
+concurrency:
+  group: \${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
 jobs:
   build_latex:
     runs-on: ubuntu-latest
+    timeout-minutes: 20
     steps:
       - name: Set up Git repository
         uses: actions/checkout@v3
