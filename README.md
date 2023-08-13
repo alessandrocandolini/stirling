@@ -7,7 +7,7 @@ Notes on the Stirling formula
 
 Assuming a standard LaTeX distribution (eg, [texlive](https://tug.org/texlive/) or [MacTeX](https://www.tug.org/mactex/)) and [asymptote](https://asymptote.sourceforge.io/) are installed,
 ```bash
-latexmk -pdflatex $filename$.tex
+latexmk -pdflatex stirling.tex
 ```
 Depending on the LaTeX distribution, asymptote might require a separate installation.
 
