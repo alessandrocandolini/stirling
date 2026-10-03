@@ -11,16 +11,21 @@ latexmk -pdflatex stirling.tex
 ```
 Depending on the LaTeX distribution, asymptote might require a separate installation.
 
-One way to install a LaTeX distribution and asymptote is via [nix](https://nixos.org/), for example using an ephemeral `nix-shell` as follows:
+One way to install a LaTeX distribution and asymptote is via [nix](https://nixos.org/), for example using an ephemeral `nix develop` shell as follows:
 ```bash
-nix-shell -p texlive.combined.scheme-full asymptote
+nix develop
 ```
 (here, the full tex distribution is used)
+
+To compile directly using the pinned environment, run
+```bash
+nix develop --no-update-lock-file --command latexmk -pdf -interaction=nonstopmode -halt-on-error stirling.tex
+```
 
 ## CI/CD 
 
 This project uses github actions to ensure at every commit we can generate a pdf file. 
-`setup-texlive-action` does not install `asymptote` though, so instead of using the more standard [setup-texlive-action](https://github.com/teatimeguest/setup-texlive-action) this project uses `nix` instead in github actions. A custom location for the nix store is used, in order to cache it using [GH cache](https://github.com/actions/cache). The size of texlive full is quite big, so the cache is ~2GB and takes ~1 minute to load.
+`setup-texlive-action` does not install `asymptote` though, so instead of using the more standard [setup-texlive-action](https://github.com/teatimeguest/setup-texlive-action) this project uses `nix` instead in github actions. The standard nix store is cached using [nix-community/cache-nix-action](https://github.com/nix-community/cache-nix-action), with a key based on the runner OS, architecture, and hashes of `flake.nix` and `flake.lock`.
 
 The pdf artifact is published in the release tags
 
@@ -35,8 +40,6 @@ From the point of view of the content:
 
 From the point of view of the setup of the project:
 * cleanup files and project
-* create deterministic nix environment for reproducible builds, with revision number etc 
-* set cache key in github actions based on the hash of the nix configuration (at the moment it's hardcoded) 
 * maybe try to see if we can avoid "custom" projects (eg, custom jhep files, etc) 
 * lot of other things 
 
