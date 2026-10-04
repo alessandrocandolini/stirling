@@ -38,23 +38,20 @@
 }
 
 % *****************************************************************************
-% 	Additional hyperref stuff (to be improved)
+% Hyperlinks and PDF navigation
 % *****************************************************************************
-\usepackage{hyperref}
+% hyperref is loaded by jheppub.
 \usepackage{xcolor}
 \definecolor{RoyalBlue}{cmyk}{1, 0.50, 0, 0}
 \definecolor{webbrown}{rgb}{.6,0,0}
-\hypersetup{%
-    colorlinks=true, linktocpage=true, pdfstartpage=1, pdfstartview=FitV,%
-    breaklinks=true, pdfpagemode=UseNone, pageanchor=true, pdfpagemode=UseOutlines,%
-    plainpages=false, bookmarksnumbered, bookmarksopen=true, bookmarksopenlevel=1,%
-    hypertexnames=true, pdfhighlight=/O,%
-    urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=RoyalBlue, pagecolor=RoyalBlue,%
-   hyperfootnotes=true
+\hypersetup{
+    colorlinks=true, linktocpage=true,
+    urlcolor=webbrown, linkcolor=RoyalBlue, citecolor=webbrown,
+    pdfstartpage=1, pdfstartview=FitV, pdfpagemode=UseOutlines,
+    bookmarksnumbered=true, bookmarksopen=true, bookmarksopenlevel=1,
+    breaklinks=true, pageanchor=true, plainpages=false,
+    hypertexnames=true, pdfhighlight=/O
 }
-
-
-\hypersetup{citecolor=webblue}
 
 \newcommand{\mail}[1]{\href{mailto:#1}{\texttt{#1}}}
 
@@ -193,7 +190,9 @@
 % *****************************************************************************
 
 \makeatletter
+% breqn uses \stepcounter, so set the counter type for the LaTeX label hook.
 \renewcommand\set@label[2]{\protected@edef\@currentlabel{#2}
+\def\@currentcounter{#1}%
 \cref@constructprefix{equation}{\cref@result}%
 \protected@xdef\cref@currentlabel{%
 [equation][\arabic{equation}][\cref@result]\eq@number}
@@ -214,9 +213,6 @@
 % *****************************************************************************
 % 	Additional setup and packages
 % *****************************************************************************
-
-\hypersetup{citecolor=webbrown}
-\hypersetup{pdfstartpage=1}
 
 \usepackage[perpage, symbol*, stable, multiple]{footmisc}	
 \setlength{\footnotemargin}{.6em}%
