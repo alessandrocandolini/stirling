@@ -43,5 +43,17 @@ sort={on}
 
 
 rewrite.rule={"^\"\([^#]*\)\"$" "{\1}"}
+rewrite.rule { month "^\({January}\|{Jan}\|jan\)$" "{1}" }
+rewrite.rule { month "^\({February}\|{Feb}\|feb\)$" "{2}" }
+rewrite.rule { month "^\({March}\|{Mar}\|mar\)$" "{3}" }
+rewrite.rule { month "^\({April}\|{Apr}\|apr\)$" "{4}" }
+rewrite.rule { month "^\({May}\|may\)$" "{5}" }
+rewrite.rule { month "^\({June}\|{Jun}\|jun\)$" "{6}" }
+rewrite.rule { month "^\({July}\|{Jul}\|jul\)$" "{7}" }
+rewrite.rule { month "^\({August}\|{Aug}\|aug\)$" "{8}" }
+rewrite.rule { month "^\({September}\|{Sep}\|sep\|{Sept}\|sept\)$" "{9}" }
+rewrite.rule { month "^\({October}\|{Oct}\|oct\)$" "{10}" }
+rewrite.rule { month "^\({November}\|{Nov}\|nov\)$" "{11}" }
+rewrite.rule { month "^\({December}\|{Dec}\|dec\)$" "{12}" }
 new.entry.type = {Online}
 

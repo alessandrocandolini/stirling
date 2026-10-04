@@ -22,6 +22,13 @@ To compile directly using the pinned environment, run
 nix develop --no-update-lock-file --command latexmk -pdf -interaction=nonstopmode -halt-on-error stirling.tex
 ```
 
+## Bibliography
+
+Edit `Qhe.bib`, then regenerate `bibliography.bib` using the rules in `bibtoolrsc`:
+```bash
+nix develop --no-update-lock-file --command bibtool -r bibtoolrsc -i Qhe.bib -o bibliography.bib
+```
+
 ## CI/CD 
 
 This project uses github actions to ensure at every commit we can generate a pdf file. 
