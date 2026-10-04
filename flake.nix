@@ -23,6 +23,7 @@
             packages = [
               pkgs.texliveFull
               pkgs.asymptote
+              pkgs.bibtool
             ];
           };
         }

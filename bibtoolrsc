@@ -1,0 +1,47 @@
+expand.macros=on
+key.generation=on
+key.expand.macros=on
+key.base=lower
+key.number.separator={}
+key.format=
+{
+%s(bibkey)
+#
+%0s(@book)
+{ %n(author) : # %n(editor)_ed: # --no-author-- :}
+{%4d(year) # }
+#
+%0s(@article)
+{ %n(author):#}
+{%4d(year)}
+#
+%0s(@proceedings)
+{%n(editor)}
+{%4d(year) # }
+#
+%0s(@inproceedings)
+{%n(author):#}
+{%4d(year) #}
+#
+%3s($type)-
+{%-2.4n(author):
+# %-6.1W(title).}
+{%4d(year) #}
+#
+%3s($type)-
+%4d(year)
+#
+???
+}
+
+sort.order={*=author # title}
+sort.order={*=title # year}
+sort.order={book=author # editor # title # series # volume # publisher # address # year }
+sort.order={article=author # title # journal # volume # pages # year }
+sort.format={%n(author) # %n(editor)}
+sort={on}
+
+
+rewrite.rule={"^\"\([^#]*\)\"$" "{\1}"}
+new.entry.type = {Online}
+
