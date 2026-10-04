@@ -31,7 +31,7 @@ nix develop --no-update-lock-file --command bibtool -r bibtoolrsc -i Qhe.bib -o 
 
 After compiling, export only cited entries from `bibliography.bib`:
 ```bash
-nix develop --no-update-lock-file --command biber --output-format=bibtex --output-resolve --output-file=bibliography-pruned.bib stirling.bcf
+nix develop --no-update-lock-file --command biber --output-format=bibtex --output-resolve --output-file=bibliography.bib stirling.bcf
 ```
 
 ## CI/CD 
