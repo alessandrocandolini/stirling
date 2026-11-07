@@ -1,20 +1,23 @@
-The basic properties of Euler's gamma function are refreshed%
+\section{Gamma function warm up}
+\label{sec:Gamma}
+
+The basic properties of Euler's gamma trascendantal function are summarised%
 \autocite[For completeness,
 refer to, \eg, the classic book of][]{Magnus.Oberhettinger.ea:1953}.
 
-There is a number of equivalent ways to define the gamma function%
+There are a number of equivalent ways to \emph{define} the gamma function%
 \autocite[Our exposition follows mostly][\S~4.1]{Freitag.Busam:2005}.
-Here we will discuss:
+These notes focus on:
 \begin{itemize}
-   \item Euler's integral representation together with analytic continuation.
-   \item characterization via the Bohr-Mollerup theorem.
-   \item characterization via Willard theorem.
+   \item the Euler's integral representation together with its analytic continuation,
+   \item the characterization via the Bohr-Mollerup theorem in $\R$,
+   \item the characterization via Willard theorem in $\C$.
 \end{itemize}
 
-The gamma function extends the notion of the factorial to real and complex
+The gamma function provides an extension of the factorial function from non-negative integers to real and complex
 numbers. The exact way in which it ``extends'' the factorial is precisely the content of the
-characterizations theorems by Bohr-Mollerup and Willard.
-However, gamma function is extremely useful well beyond the factorials. 
+characterizations theorems by Bohr-Mollerup and Willard, respectively.
+However, usefulness and applicability of the gamma function go way beyond providing a generalisation of factorial function.
 
 \subsection{Integral representation}
 \label{sec:gamma integral}
@@ -22,7 +25,7 @@ However, gamma function is extremely useful well beyond the factorials.
 \begin{definition}[Gamma function]
    \label{def:Gamma}
 The gamma function 
-$\GammaFunc{z}$ of a complex number $z$ can be defined by the Euler's integral representation 
+$\GammaFunc{z}$ of a complex number $z$ can be defined by the Euler's integral representation
 \begin{dmath}[label={Gamma}]
    \GammaFunc{z} = \Integrate{ t^{z-1} \exp{-t} }{t, 0, +\infty}
    %\condition{$\forall z\in\C$ such that $\Re z > 0$}
@@ -32,35 +35,43 @@ valid for every $z\in\C$ such that $\Re z > 0$,
    continuation}.
 \end{definition}
 
-\begin{remark}
-   The definition is \emph{not} \cref{eq:Gamma} alone. It is \cref{eq:Gamma}
-   for $\Re{z} >0$ plus analytic continuation. Both points will be throughly
-   discuss later.
-\end{remark}
+The integral representation in \cref{eq:Gamma} is known as ``Euler integral of the second kind''.
+(Euler's integral of the first kind is the beta function of \cref{sec:Beta}.)
 
-%\begin{remark}
-Let us clarify better \cref{eq:Gamma}.
-      By definition of the complex powers,
-      $t^{z-1} \coloneqq \exp{ (z-1) \log{t} }$, where $\log{t}$ is the
-      \emph{real-valued} logarithmic function of the real variable $t$, while
-      the exponential is the complex-valued exponential function.
-      Integration in \cref{eq:Gamma} is over the dummy variable $t$ running over the real interval
-$\interval[open right]{0}{+\infty}$,
-\ie, we are integrating with respect to a \emph{real} (and not a
-complex) variable. 
-
-   In order \cref{def:Gamma} makes sense, we need to prove that 
+For \cref{def:Gamma} to make sense, we need to prove that:
 \begin{inparaenum}[(a)]
-\item the integral in \cref{eq:Gamma} is convergent if and only if $\Re{z}>0$;
-\item the integral in \cref{eq:Gamma} defines an \emph{holomorphic} function in the half plane 
+\item the improper integral in \cref{eq:Gamma} is convergent if and only if $\Re{z}>0$;
+\item the integral in \cref{eq:Gamma} defines a \emph{holomorphic} function in the half plane
    $\Re{z} >0$;
 \item study its analytic continuation for $\Re z \leq 0$.
 \end{inparaenum}
-Let us discuss all these three points.
+
+
+\begin{remark}
+  To stress again, \cref{def:Gamma} is \emph{not} \cref{eq:Gamma} alone.
+  We will prove that \cref{def:Gamma} means there exists an holomorphic in the complex plane except at zero and the negative integers, where it has simple poles.
+  Such function admits an integral representation in the $\Re{z} > 0$ half complex plane in the form of \cref{eq:Gamma}.
+  The gamma function admits other integral representations besides \cref{eq:Gamma}, and other non-integral representations, some of which will be discussed later.
+\end{remark}
+
+%\begin{remark}
+  Before studying the domain of definition of the integral representation in \cref{eq:Gamma}, let's make more explicit its meaning.
+      By definition of the complex powers,
+      $t^{z} = \exp{ z \log{t} }$, where $\log{t}$ is the
+      \emph{real-valued} logarithmic function of the \emph{real} variable $t$, while
+      the exponential is the complex-valued exponential function.
+      Integration in \cref{eq:Gamma} is over the real interval $\interval[open]{0}{+\infty}$,
+\ie, the integrand is a complex-valued function but the integration is performed along the positive real axis:
+\begin{dmath*}
+  \GammaFunc{z}
+  = \lim_{\substack{a \to 0^{+} \\ b \to +\infty}}
+    \int_{a}^{b} t^{z-1}\exp{-t}\d{t}
+   \condition{$\forall z\in\C$ such that $\Re z > 0$}
+\end{dmath*}.
 
 \begin{lemma}
 
-   $\Integrate{ t^{z-1} \exp{-t}}{t, 0, +\infty}$ is convergent
+   $\Integrate{ t^{z-1} \exp{-t}}{t, 0, +\infty}$ converges absolutely
    \emph{if and only if} $\Re{z}> 0$.
 \end{lemma}
 \begin{proof}
